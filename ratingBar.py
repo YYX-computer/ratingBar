@@ -12,6 +12,7 @@ class ratingBar:
 		self.starting = starting
 		sys.stdout.write('%s%s%s/%s|%s|0%%'%(self.starting,'|' * int(bool(self.starting)),n_digit(self.n,'0'),length,' ' * length))
 		sys.stdout.flush()
+		self.len = 0
 	def flush(self,length):
 		str1 = '#' * length + ' ' * (self.length - length)
 		sys.stdout.flush()
@@ -19,3 +20,7 @@ class ratingBar:
 		if(length == self.length):
 			sys.stdout.write('\n')
 			sys.stdout.flush()
+		self.len = length
+	def count(self):
+		self.len += 1
+		self.flush(self.len)
