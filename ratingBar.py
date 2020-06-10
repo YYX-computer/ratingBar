@@ -1,5 +1,5 @@
 import sys
-def n_digit(n,string):
+def complete_string(n,string):
 	while(len(string) < n):
 		string += ' '
 	return string
