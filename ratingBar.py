@@ -15,13 +15,16 @@ class ratingBar:
 		sys.stdout.flush()
 		self.len = 0
 	def flush(self,length):
-		str1 = '#' * length + ' ' * (self.length - length)
-		sys.stdout.flush()
-		sys.stdout.write('\r%s%s%s/%s|%s|%s%% %s'%(self.starting,'|' * int(bool(self.starting)),n_digit(self.n,str(length)),self.length,str1,self.one * length，self.ending))
-		if(length == self.length):
-			sys.stdout.write('\n')
+		if(length <= self.length):
+			str1 = '#' * length + ' ' * (self.length - length)
 			sys.stdout.flush()
-		self.len = length
+			sys.stdout.write('\r%s%s%s/%s|%s|%s%% %s'%(self.starting,'|' * int(bool(self.starting)),n_digit(self.n,str(length)),self.length,str1,self.one * length，self.ending))
+			if(length == self.length):
+				sys.stdout.write('\n')
+				sys.stdout.flush()
+			self.len = length
+		else:
+			raise ValueError('index out of range')
 	def count(self):
 		self.len += 1
 		self.flush(self.len)
